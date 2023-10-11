@@ -24,13 +24,19 @@ class Program
         return a + b;
     }
 
-    static int[] PrintArray(int[] array)
+    static void PrintArray(int[] array)
     {
         for (int i = 0; i < array.Length; i++)
         {
             Print(array[i].ToString());
         }
-        return array;
+    }
+
+    static void PrintList(List<int> list){
+        for (int i = 0; i < list.Length; i++)
+        {
+            Print(list[i].ToString());
+        }
     }
 
     static bool IsEven(int number)
@@ -68,7 +74,7 @@ class Program
         return true;
     }
 
-    static int SumOfList(int[] list){
+    static int SumOfList(List<int> list){
         int sum = 0;
         for (int i = 0; i < list.Length; i++)
         {
@@ -77,7 +83,7 @@ class Program
         return sum;
     }
 
-    static int FindMax(int[] list){
+    static int FindMax(List<int> list){
         int max = list[0];
         for (int i = 1; i < list.Length; i++)
         {
@@ -88,7 +94,7 @@ class Program
         return max;
     }
 
-    static int CountEvenNumbers(int[] list){
+    static int CountEvenNumbers(List<int> list){
         int even = 0;
 
         for (int i = 0; i < list.Length; i++)
@@ -99,7 +105,7 @@ class Program
         }
     }
 
-    static void RemoveDuplicates(int[] list){
+    static void RemoveDuplicates(List<int> list){
         int[] newList = new int[list.Length];
         int index = 0;
         for (int i = 0; i < list.Length; i++)
@@ -117,7 +123,7 @@ class Program
                 index++;
             }
         }
-        PrintArray(newList);
+        PrintList(newList);
     }
 
     static bool IsPalindrome(string text){
@@ -160,6 +166,29 @@ class Program
             }
         }
         return text2;
+    }
+
+    static int CalculatePower(int baseNumber, int exponent){
+        int result = 1;
+        for (int i = 0; i < exponent; i++)
+        {
+            result *= baseNumber;
+        }
+        return result;
+    }
+
+    static void SortArray(int[] nums){
+        for (int i = 0; i < nums.Length; i++)
+        {
+            for (int j = i + 1; j < nums.Length; j++)
+            {
+                if(nums[i] > nums[j]){
+                    int temp = nums[i];
+                    nums[i] = nums[j];
+                    nums[j] = temp;
+                }
+            }
+        }
     }
 
     static void Main(string[] args)
