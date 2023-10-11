@@ -33,7 +33,7 @@ class Program
     }
 
     static void PrintList(List<int> list){
-        for (int i = 0; i < list.Length; i++)
+        for (int i = 0; i < list.Count; i++)
         {
             Print(list[i].ToString());
         }
@@ -76,7 +76,7 @@ class Program
 
     static int SumOfList(List<int> list){
         int sum = 0;
-        for (int i = 0; i < list.Length; i++)
+        for (int i = 0; i < list.Count; i++)
         {
             sum += list[i];
         }
@@ -85,7 +85,7 @@ class Program
 
     static int FindMax(List<int> list){
         int max = list[0];
-        for (int i = 1; i < list.Length; i++)
+        for (int i = 1; i < list.Count; i++)
         {
             if(list[i] > max){
                 max = list[i];
@@ -97,18 +97,19 @@ class Program
     static int CountEvenNumbers(List<int> list){
         int even = 0;
 
-        for (int i = 0; i < list.Length; i++)
+        for (int i = 0; i < list.Count; i++)
         {
             if(IsEven(list[i])){
                 even++;
             }
         }
+        return even;
     }
 
     static void RemoveDuplicates(List<int> list){
-        int[] newList = new int[list.Length];
+        int[] newList = new int[list.Count];
         int index = 0;
-        for (int i = 0; i < list.Length; i++)
+        for (int i = 0; i < list.Count; i++)
         {
             bool found = false;
             for (int j = 0; j < newList.Length; j++)
@@ -123,7 +124,7 @@ class Program
                 index++;
             }
         }
-        PrintList(newList);
+        PrintArray(newList);
     }
 
     static bool IsPalindrome(string text){
@@ -189,6 +190,58 @@ class Program
                 }
             }
         }
+    }
+
+    static void SortList(List<int> list){
+        for (int i = 0; i < list.Count; i++)
+        {
+            for (int j = i + 1; j < list.Count; j++)
+            {
+                if(list[i] > list[j]){
+                    int temp = list[i];
+                    list[i] = list[j];
+                    list[j] = temp;
+                }
+            }
+        }
+    }
+
+    static List<int> FindCommonElements(int[] arr1, int[] arr2){
+        List<int> common = new List<int>();
+        for (int i = 0; i < arr1.Length; i++)
+        {
+            for (int j = 0; j < arr2.Length; j++)
+            {
+                if(arr1[i] == arr2[j]){
+                    common.Add(arr1[i]);
+                }
+            }
+        }
+        return common;
+    }
+
+    /*Feladat 19: Metódus neve: IsPalindromeNumber Bemenet: Egész szám (int number) Kimenet: Logikai érték (bool) Leírás: Hozz létre egy metódust, amely egy egész számot kap paraméterként, majd visszaadja true-t, ha a szám palindróm, és false-t, ha nem.
+*/
+    static bool IsPalindromeNumber(int number){
+        int reversed = 0;
+        int temp = number;
+        while(temp > 0){
+            reversed = reversed * 10 + temp % 10;
+            temp /= 10;
+        }
+        return number == reversed;
+    }
+
+    /*Metódus neve: FindMissingNumber Bemenet: Egész számokból álló tömb (int[] numbers) Kimenet: Egész szám (int) Leírás: Hozz létre egy metódust, amely egy egész számokból álló tömböt kap paraméterként, amely tartalmaz egy számsorozatot 1-től n-ig, de egy szám hiányzik belőle. A metódusnak vissza kell adnia a hiányzó számot.*/
+    
+    static int FindMissingNumber(int[] numbers){
+        
+    }
+
+    /*Metódus neve: SwapElements Bemenet: Egész számokból álló tömb (int[] numbers) Kimenet: Nincs (void) Leírás: Hozz létre egy metódust, amely egy egész számokból álló tömböt kap paraméterként, majd kicseréli az első és az utolsó elemét.*/
+    
+    static void SwapElements(int[] numbers){
+
     }
 
     static void Main(string[] args)
